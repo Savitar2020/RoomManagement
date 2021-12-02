@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="RoomManagement-1.0-SNAPSHOT.war">
+    <root id="archive" name="RefProject-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="RoomManagement:war exploded" />
     </root>
   </artifact>
