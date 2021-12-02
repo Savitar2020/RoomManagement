@@ -1,5 +1,6 @@
 package roommanagement.data;
 
+import roommanagement.model.Event;
 import roommanagement.util.Result;
 
 import java.util.List;
@@ -25,12 +26,13 @@ public interface Dao<T, K> {
 
     /**
      * gets a single datasets in a table
-     * @param k  primary key
+     * @param i  primary key
      * @return model-object
      */
-    default T getEntity(K k) {
+    default T getEntity(int i) {
         throw new UnsupportedOperationException();
     }
+
 
     /**
      * saves an object to the database entity
@@ -42,11 +44,11 @@ public interface Dao<T, K> {
     }
 
     /**
-     * delets an entity in the database
-     * @param k primary key
+     * deletes an entity in the database
+     * @param i primary key
      * @return Result-code
      */
-    default Result delete (K k) {
+    default Result delete (int i) {
         throw new UnsupportedOperationException();
     }
 
