@@ -17,10 +17,10 @@ public class Reservation {
     //@Size(min=3, max=40)
     private String end;
 
-    @FormParam("Room_roomID")
+    @FormParam("Room_roomId")
     //@DecimalMin(value="0.05")
     //@DecimalMax(value="199.95")
-    private int Room_roomID;
+    private int roomID;
 
     private String reservation;
     private Room room;
@@ -93,42 +93,22 @@ public class Reservation {
     /**
      * @return the Room_roomID
      */
-    public int getRoom_roomID() {
-        return Room_roomID;
+    public int getRoomID() {
+        return roomID;
     }
 
     /**
      * Sets the room_roomID
      *
-     * @param room_roomID the value to set
+     * @param roomID the value to set
      */
-    public void setRoom_roomID(int room_roomID) {
-        Room_roomID = room_roomID;
+    public void setRoomID(int roomID) {
+        this.roomID = roomID;
     }
 
 
     public static boolean idCheck(String ID) {
-        char[] idChar = ID.toCharArray();
-        boolean firstHalf = false;
-        boolean secHalf = false;
-        for (int i = 0; i < 5; ++i) {//Check first half
-            if ((idChar[i] > 47 && idChar[i] < 58)) {//Checks ascii vals to see if valid ID
-                firstHalf = true;
-            }
-        }
-
-        for (int i = 5; i < idChar.length; ++i) {//Check second half
-            if ((idChar[i] > 47 && idChar[i] < 58)) {//Checks ascii vals to see if valid ID
-                secHalf = true;
-            }
-        }
-
-        //If all values are valid, returns true.
-        if (firstHalf && secHalf && idChar[4] == '-' && ID.length() == 9) {
-            return true;
-        }
-
-        return false;
+        return true;
     }
 
     /**

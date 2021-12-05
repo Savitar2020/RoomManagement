@@ -1,6 +1,12 @@
 package roommanagement.service;
 
 
+import roommanagement.data.Dao;
+import roommanagement.data.ReservationDao;
+import roommanagement.model.Reservation;
+import roommanagement.model.Room;
+import roommanagement.util.Result;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -85,7 +91,7 @@ public class ReservationService {
             @FormParam("reservationID") int reservationID,
             @FormParam("start") String start,
             @FormParam("end") String end,
-            @FormParam("roomID") int roomID
+            @FormParam("Room_roomId") int roomID
 
     ) {
         int httpStatus;
@@ -95,7 +101,7 @@ public class ReservationService {
         reservation.setStart(start);
         reservation.setEnd(end);
         reservation.setRoom(new Room());
-        reservation.getRoom().setRoomId(roomID);
+        reservation.getRoom().setRoomID(roomID);
 
         Dao<Reservation, String> reservationDao = new ReservationDao();
         Result result = reservationDao.save(reservation);
@@ -122,7 +128,7 @@ public class ReservationService {
         int httpStatus;
         String message;
         Dao<Reservation, String> reservationDao = new ReservationDao();
-        Reservation result = reservationDao.delete(reservationID);
+        Result result = reservationDao.delete(reservationID);
         if (result == Result.SUCCESS) {
             httpStatus = 200;
             message = "Reservation gelöscht";

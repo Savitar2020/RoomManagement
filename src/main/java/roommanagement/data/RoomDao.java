@@ -91,7 +91,7 @@ public class RoomDao implements Dao<Room, String>{
                 "REPLACE Room" +
                         " SET roomID='" + room.getRoomID() + "'," +
                         " name='" + room.getName() + "'," +
-                        " text='" + room.getText() + "'," +
+                        " descripton='" + room.getDescription() + "'," +
                         " room=" + room.getRoom() + ",";
         try {
             connection = MySqlDB.getConnection();
@@ -151,7 +151,7 @@ public class RoomDao implements Dao<Room, String>{
     private void setValues(ResultSet resultSet, Room room) throws SQLException {
         room.setRoomID(resultSet.getInt("roomID"));
         room.setName(resultSet.getString("name"));
-        room.setText(resultSet.getString("text"));
+        room.setDescription(resultSet.getString("description"));
     }
 
     /**

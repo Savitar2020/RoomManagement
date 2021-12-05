@@ -1,6 +1,11 @@
 package roommanagement.service;
 
 
+import roommanagement.data.Dao;
+import roommanagement.data.RoomDao;
+import roommanagement.model.Room;
+import roommanagement.util.Result;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -57,7 +62,7 @@ public class RoomService {
     @Produces(MediaType.APPLICATION_JSON)
 
     public Response readRooms(
-            @QueryParam("uuid") int roomID,
+            @QueryParam("id") int roomID,
             @CookieParam("token") String token
     ) {
         Dao<Room, String> roomDAO = new RoomDao();
@@ -81,7 +86,8 @@ public class RoomService {
     public Response saveRoom(
             @FormParam("roomID") int roomID,
             @FormParam("name") String name,
-            @FormParam("description") String description
+            @FormParam("description") String description,
+            @FormParam("imageSrc") String imageSrc
 
     ) {
         int httpStatus;
@@ -90,7 +96,7 @@ public class RoomService {
         room.setRoomID(roomID);
         room.setName(name);
         room.setDescription(description);
-
+        room.setImageSrc(imageSrc);
 
         Dao<Room, String> roomDao = new RoomDao();
         Result result = roomDao.save(room);
@@ -117,7 +123,7 @@ public class RoomService {
         int httpStatus;
         String message;
         Dao<Room, String> roomDao = new RoomDao();
-        Room result = roomDao.delete(roomID);
+        Result result = roomDao.delete(roomID);
         if (result == Result.SUCCESS) {
             httpStatus = 200;
             message = "Raum gelöscht";

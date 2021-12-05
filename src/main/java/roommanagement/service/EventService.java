@@ -1,6 +1,13 @@
 package roommanagement.service;
 
 
+import roommanagement.data.Dao;
+import roommanagement.data.EventDao;
+import roommanagement.model.Event;
+import roommanagement.model.Reservation;
+import roommanagement.model.Room;
+import roommanagement.util.Result;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -100,7 +107,7 @@ public class EventService {
         event.setRoom(new Room());
         event.getRoom().setRoomID(roomID);
         event.setReservation(new Reservation());
-        event.getReservation().setReservationId(reservationID);
+        event.getReservation().setReservationID(reservationID);
 
         Dao<Event, String> eventDao = new EventDao();
         Result result = eventDao.save(event);
@@ -127,7 +134,7 @@ public class EventService {
         int httpStatus;
         String message;
         Dao<Event, String> eventDao = new EventDao();
-        Event result = eventDao.delete(eventID);
+        Result result = eventDao.delete(eventID);
         if (result == Result.SUCCESS) {
             httpStatus = 200;
             message = "Event gelöscht";
