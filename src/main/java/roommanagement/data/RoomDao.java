@@ -59,9 +59,9 @@ public class RoomDao implements Dao<Room, String>{
         String sqlQuery =
                 "SELECT roomId,name, description, imageSrc" +
                 " FROM Room"+
-                "WHERE roomID=?";
+                " WHERE roomId=?";
         try {
-            hashMap.put(1, sqlQuery);
+            hashMap.put(1, String.valueOf(roomID));
             resultSet = MySqlDB.sqlSelect(sqlQuery, hashMap);
             if (resultSet.next()) {
                 setValues(resultSet, room);

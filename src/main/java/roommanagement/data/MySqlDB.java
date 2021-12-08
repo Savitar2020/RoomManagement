@@ -30,22 +30,26 @@ public class MySqlDB {
     private MySqlDB() {
     }
 
-    static ResultSet sqlSelect(String sqlQuery) {
+    static synchronized ResultSet sqlSelect(String sqlQuery)
+            throws SQLException {
         return sqlSelect(sqlQuery, null);
     }
 
-    static ResultSet sqlSelect(String sqlQuery, Map<Integer, String> values) {
+    static ResultSet sqlSelect(String sqlQuery, Map<Integer, String> values) throws SQLException {
+        setResultSet(null);
+
         try {
             setPrepStmt(getConnection().prepareStatement(sqlQuery));
-            if (values != null && !values.isEmpty()) {
+
+            if (values != null) {
                 setValues(values);
             }
             setResultSet(getPrepStmt().executeQuery());
-        } catch (SQLException sqlEx) {
-            sqlEx.printStackTrace();
-            throw new RuntimeException();
+
+        } catch (SQLException sqlException) {
+            throw sqlException;
         }
-        return resultSet;
+        return getResultSet();
     }
 
     private static void setValues(Map<Integer, String> values)
