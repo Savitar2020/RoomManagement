@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class EventDao implements Dao<Event, Integer> {
+public class EventDao implements Dao<Event, String> {
 
 
     /**

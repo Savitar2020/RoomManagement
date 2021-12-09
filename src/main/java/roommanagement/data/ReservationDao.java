@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ReservationDAO implements Dao<Reservation, String> {
+public class ReservationDao implements Dao<Reservation, String> {
 
     /**
      * reads all reservations in the table "Reservation"
@@ -26,7 +26,7 @@ public class ReservationDAO implements Dao<Reservation, String> {
         List<Reservation> reservationList = new ArrayList<>();
         String sqlQuery =
                 "SELECT re.reservationID,re.start, re.end, ro.roomID" +
-                        " FROM Reservation AS re JOIN Room AS ro USING (roomID)";
+                        " FROM Reservation AS re JOIN Room AS ro USING (Room_roomId)";
         try {
             resultSet = MySqlDB.sqlSelect(sqlQuery);
             while (resultSet.next()) {

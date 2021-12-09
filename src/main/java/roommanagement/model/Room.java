@@ -1,7 +1,6 @@
 package roommanagement.model;
 
 import javax.ws.rs.FormParam;
-import java.util.Date;
 
 public class Room {
 
@@ -13,9 +12,29 @@ public class Room {
     //@Size(min=5, max=40)
     private String name;
 
-    @FormParam("text")
+    @FormParam("imageSrc")
+    //@Size(min=5, max=40)
+    private String imageSrc;
+
+    public String getImageSrc() {
+        return imageSrc;
+    }
+
+    public void setImageSrc(String imageSrc) {
+        this.imageSrc = imageSrc;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @FormParam("description")
     //@Size(min=3, max=40)
-    private String text;
+    private String description;
 
     private String room;
 
@@ -59,21 +78,6 @@ public class Room {
         this.name = name;
     }
 
-    /**
-     * @return the text
-     */
-    public String getText() {
-        return text;
-    }
-
-    /**
-     * Sets the text
-     *
-     * @param text the value to set
-     */
-    public void setText(String text) {
-        this.text = text;
-    }
 
 
     /**

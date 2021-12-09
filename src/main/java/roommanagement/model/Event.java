@@ -10,8 +10,17 @@ public class Event {
     //@Pattern(regexp = "(?=[0-9]{13}|[- 0-9]{17})97[89](-[0-9]{1,5}){3}-[0-9]")
     private int eventID;
 
-
     private Reservation reservation;
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    private Room room;
 
     @FormParam("description")
     //@Size(min=3, max=40)

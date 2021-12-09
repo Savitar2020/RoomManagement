@@ -10,17 +10,17 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * configure the web services and properties
+ * services for the projects
  * <p>
- * M151: BookDB
+ * 426: Scrum-Project
  *
- * @author Marcel Suter (Ghwalin)
+ * @author Marcio Duarte
  */
 
 @ApplicationPath("/resource")
 
 public class Config extends Application {
-    private static final String PROPERTIES_PATH = "/home/bzz/webapp/roomManagmentDB.properties";
+    private static final String PROPERTIES_PATH = "/home/bzz/webapp/RM.properties";
     private static Properties properties = null;
 
     /**
@@ -31,9 +31,9 @@ public class Config extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         HashSet providers = new HashSet<Class<?>>();
-//        providers.add(BookService.class);
-//        providers.add(UserService.class);
-//        providers.add(PublisherService.class);
+        providers.add(EventService.class);
+        providers.add(ReservationService.class);
+        providers.add(RoomService.class);
         return providers;
     }
 

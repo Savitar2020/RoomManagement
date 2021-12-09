@@ -23,7 +23,7 @@ public class RoomDao implements Dao<Room, String>{
         ResultSet resultSet;
         List<Room> roomList = new ArrayList<>();
         String sqlQuery =
-                "SELECT roomId, name, description" +
+                "SELECT roomId, name, description, imageSrc" +
                 " FROM Room";
         try {
             resultSet = MySqlDB.sqlSelect(sqlQuery);
@@ -57,11 +57,11 @@ public class RoomDao implements Dao<Room, String>{
         HashMap<Integer, String> hashMap = new HashMap<>();
 
         String sqlQuery =
-                "SELECT roomId,name, description" +
+                "SELECT roomId,name, description, imageSrc" +
                 " FROM Room"+
-                "WHERE roomID=?";
+                " WHERE roomId=?";
         try {
-            hashMap.put(1, sqlQuery);
+            hashMap.put(1, String.valueOf(roomID));
             resultSet = MySqlDB.sqlSelect(sqlQuery, hashMap);
             if (resultSet.next()) {
                 setValues(resultSet, room);
@@ -91,7 +91,8 @@ public class RoomDao implements Dao<Room, String>{
                 "REPLACE Room" +
                         " SET roomID='" + room.getRoomID() + "'," +
                         " name='" + room.getName() + "'," +
-                        " text='" + room.getText() + "'," +
+                        " descripton='" + room.getDescription() + "'," +
+                        " imageSrc='" + room.getImageSrc() + "'," +
                         " room=" + room.getRoom() + ",";
         try {
             connection = MySqlDB.getConnection();
@@ -151,7 +152,8 @@ public class RoomDao implements Dao<Room, String>{
     private void setValues(ResultSet resultSet, Room room) throws SQLException {
         room.setRoomID(resultSet.getInt("roomID"));
         room.setName(resultSet.getString("name"));
-        room.setText(resultSet.getString("text"));
+        room.setDescription(resultSet.getString("description"));
+        room.setImageSrc(resultSet.getString("imageSrc"));
     }
 
     /**
