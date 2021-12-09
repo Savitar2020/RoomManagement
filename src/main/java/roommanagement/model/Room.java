@@ -5,32 +5,15 @@ import javax.ws.rs.FormParam;
 public class Room {
 
     @FormParam("roomID")
-    //@Pattern(regexp = "(?=[0-9]{13}|[- 0-9]{17})97[89](-[0-9]{1,5}){3}-[0-9]")
     private int roomID;
 
     @FormParam("name")
-    //@Size(min=5, max=40)
+    //@Size(min=5, max=45)
     private String name;
 
     @FormParam("imageSrc")
-    //@Size(min=5, max=40)
+    //@Size(min=5, max=45)
     private String imageSrc;
-
-    public String getImageSrc() {
-        return imageSrc;
-    }
-
-    public void setImageSrc(String imageSrc) {
-        this.imageSrc = imageSrc;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     @FormParam("description")
     //@Size(min=3, max=40)
@@ -38,6 +21,16 @@ public class Room {
 
     private String room;
 
+    @FormParam("price")
+    private long price;
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
 
     /**
      * @return the roomID
@@ -97,6 +90,24 @@ public class Room {
 
     public void setRoom(String room) {
         this.room = room;
+    }
+
+
+
+    public String getImageSrc() {
+        return imageSrc;
+    }
+
+    public void setImageSrc(String imageSrc) {
+        this.imageSrc = imageSrc;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }
