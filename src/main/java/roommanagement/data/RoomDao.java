@@ -23,7 +23,7 @@ public class RoomDao implements Dao<Room, String>{
         ResultSet resultSet;
         List<Room> roomList = new ArrayList<>();
         String sqlQuery =
-                "SELECT roomId, name, description, imageSrc" +
+                "SELECT roomID, name, description, imageSrc, price" +
                 " FROM Room";
         try {
             resultSet = MySqlDB.sqlSelect(sqlQuery);
@@ -57,7 +57,7 @@ public class RoomDao implements Dao<Room, String>{
         HashMap<Integer, String> hashMap = new HashMap<>();
 
         String sqlQuery =
-                "SELECT roomId,name, description, imageSrc" +
+                "SELECT roomID,name, description, imageSrc, price" +
                 " FROM Room"+
                 " WHERE roomId=?";
         try {
@@ -93,7 +93,8 @@ public class RoomDao implements Dao<Room, String>{
                         " name='" + room.getName() + "'," +
                         " descripton='" + room.getDescription() + "'," +
                         " imageSrc='" + room.getImageSrc() + "'," +
-                        " room=" + room.getRoom() + ",";
+                        " price='" + room.getPrice() + "'," +
+                        " room=" + room.getRoom();
         try {
             connection = MySqlDB.getConnection();
             prepStmt = connection.prepareStatement(sqlQuery);
@@ -154,6 +155,7 @@ public class RoomDao implements Dao<Room, String>{
         room.setName(resultSet.getString("name"));
         room.setDescription(resultSet.getString("description"));
         room.setImageSrc(resultSet.getString("imageSrc"));
+        room.setPrice(resultSet.getLong("price"));
     }
 
     /**

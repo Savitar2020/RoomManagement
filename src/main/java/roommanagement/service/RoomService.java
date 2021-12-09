@@ -62,7 +62,7 @@ public class RoomService {
     @Produces(MediaType.APPLICATION_JSON)
 
     public Response readRooms(
-            @QueryParam("id") int roomID,
+            @QueryParam("ID") int roomID,
             @CookieParam("token") String token
     ) {
         Dao<Room, String> roomDAO = new RoomDao();
@@ -87,7 +87,8 @@ public class RoomService {
             @FormParam("roomID") int roomID,
             @FormParam("name") String name,
             @FormParam("description") String description,
-            @FormParam("imageSrc") String imageSrc
+            @FormParam("imageSrc") String imageSrc,
+            @FormParam("price") long price
 
     ) {
         int httpStatus;
@@ -97,6 +98,7 @@ public class RoomService {
         room.setName(name);
         room.setDescription(description);
         room.setImageSrc(imageSrc);
+        room.setPrice(price);
 
         Dao<Room, String> roomDao = new RoomDao();
         Result result = roomDao.save(room);
@@ -118,7 +120,7 @@ public class RoomService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteRoom(
-            @QueryParam("id") int roomID
+            @QueryParam("ID") int roomID
     ) {
         int httpStatus;
         String message;
