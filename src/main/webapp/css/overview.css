@@ -1,5 +1,5 @@
 .product-container{
-    padding: 0 3vw;
+    padding: 0 8.5vw;
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -14,6 +14,7 @@
     width: 250px;
     height: 550px;
     margin-right: 40px;
+    margin-left: 40px;
 }
 
 .product-image{
