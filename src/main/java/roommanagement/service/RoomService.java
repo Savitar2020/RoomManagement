@@ -54,7 +54,7 @@ public class RoomService {
     /**
      * reads a single room identified by the roomID
      *
-     * @param roomID the roomID in the URL
+     * @param roomId the roomID in the URL
      * @return Response
      */
     @GET
@@ -62,11 +62,11 @@ public class RoomService {
     @Produces(MediaType.APPLICATION_JSON)
 
     public Response readRooms(
-            @QueryParam("ID") int roomID,
+            @QueryParam("Id") int roomId,
             @CookieParam("token") String token
     ) {
         Dao<Room, String> roomDAO = new RoomDao();
-        Room room = roomDAO.getEntity(roomID);
+        Room room = roomDAO.getEntity(roomId);
         if (room.getName() == null) {
              return Response
                     .status(404)
@@ -84,7 +84,7 @@ public class RoomService {
     @Path("save")
     @Produces(MediaType.TEXT_PLAIN)
     public Response saveRoom(
-            @FormParam("roomID") int roomID,
+            @FormParam("roomId") int roomId,
             @FormParam("name") String name,
             @FormParam("description") String description,
             @FormParam("imageSrc") String imageSrc,
@@ -94,7 +94,7 @@ public class RoomService {
         int httpStatus;
         String message;
         Room room = new Room();
-        room.setRoomID(roomID);
+        room.setRoomId(roomId);
         room.setName(name);
         room.setDescription(description);
         room.setImageSrc(imageSrc);
@@ -120,12 +120,12 @@ public class RoomService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteRoom(
-            @QueryParam("ID") int roomID
+            @QueryParam("Id") int roomId
     ) {
         int httpStatus;
         String message;
         Dao<Room, String> roomDao = new RoomDao();
-        Result result = roomDao.delete(roomID);
+        Result result = roomDao.delete(roomId);
         if (result == Result.SUCCESS) {
             httpStatus = 200;
             message = "Raum gelöscht";

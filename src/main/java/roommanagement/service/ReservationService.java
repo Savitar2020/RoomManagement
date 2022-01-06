@@ -71,7 +71,7 @@ public class ReservationService {
     ) {
         Dao<Reservation, String> reservationDao = new ReservationDao();
         Reservation reservation = reservationDao.getEntity(reservationID);
-        if (reservation.getRoomID() == 0) {
+        if (reservation.getReservationId() == 0) {
             return Response
                     .status(404)
                     .entity("{\"error\":\"Kein Reservation gefunden\"}")
@@ -88,21 +88,23 @@ public class ReservationService {
     @Path("save")
     @Produces(MediaType.TEXT_PLAIN)
     public Response saveReservation(
-            @FormParam("reservationID") int reservationID,
+            @FormParam("reservationId") int reservationId,
             @FormParam("start") String start,
             @FormParam("end") String end,
-            @FormParam("Room_roomId") int roomID
+            @FormParam("roomId") int roomId,
+            @FormParam("tenantPhoneNumber") String tenantPhoneNumber,
+            @FormParam("tenantName") String tenantName
 
     ) {
         int httpStatus;
         String message;
         Reservation reservation = new Reservation();
-        reservation.setReservationID(reservationID);
+        reservation.setReservationId(reservationId);
         reservation.setStart(start);
         reservation.setEnd(end);
-        reservation.setRoom(new Room());
-        reservation.getRoom().setRoomID(roomID);
-
+        reservation.setRoomId(roomId);
+        reservation.setTenantPhoneNumber(tenantPhoneNumber);
+        reservation.setTenantName(tenantName);
         Dao<Reservation, String> reservationDao = new ReservationDao();
         Result result = reservationDao.save(reservation);
         if (result == Result.SUCCESS) {
@@ -123,12 +125,12 @@ public class ReservationService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteReservation(
-            @QueryParam("id") int reservationID
+            @QueryParam("id") int reservationId
     ) {
         int httpStatus;
         String message;
         Dao<Reservation, String> reservationDao = new ReservationDao();
-        Result result = reservationDao.delete(reservationID);
+        Result result = reservationDao.delete(reservationId);
         if (result == Result.SUCCESS) {
             httpStatus = 200;
             message = "Reservation gelöscht";
