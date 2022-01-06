@@ -4,8 +4,8 @@ import javax.ws.rs.FormParam;
 
 public class Room {
 
-    @FormParam("roomID")
-    private int roomID;
+    @FormParam("roomId")
+    private int roomId;
 
     @FormParam("name")
     //@Size(min=5, max=45)
@@ -35,24 +35,12 @@ public class Room {
     /**
      * @return the roomID
      */
-    public int getRoomID() {
-        return roomID;
+    public int getRoomId() {
+        return roomId;
     }
 
-
-    /**
-     * sets the roomID if valid
-     *
-     * @param roomID the roomID to be set
-     */
-    public void setRoomID(int roomID) {
-        if (roomID != 0) {
-            if (Reservation.idCheck(String.valueOf(roomID))) {
-                this.roomID = roomID;
-            }
-            roomID = 0;
-        }
-        this.roomID = roomID;
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
     }
 
     /**
