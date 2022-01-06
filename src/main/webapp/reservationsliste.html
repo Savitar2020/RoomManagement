@@ -23,25 +23,26 @@
     <a href="meinLink">Startseite</a> |
     <a href="meinLink">Allgemeine Mietbedingungen</a> |
 </nav>
-
+<span id='message' style='color: red;'></span>
 <body>
 <h1>Reservationsliste</h1>
 <form id='reservationForm'>
     <table class='table table-striped' id='reservationliste'>
         <thead>
         <tr>
+            <th scope='col'>Reservations ID</th>
             <th scope='col'>Start</th>
             <th scope='col'>End</th>
             <th scope='col'>Mieter Name</th>
             <th scope='col'>Mieter Telefonnummer</th>
         </tr>
-        <tr>
+        <!--<tr>
             <td>reservation.start</td>
             <td>reservation.end</td>
             <td>reservation.tenantName</td>
             <td>reservation.tenantPhoneNumber</td>
             <td></td>
-        </tr>
+        </tr>-->
         </thead>
         <tbody>
         </tbody>
@@ -52,6 +53,9 @@
     <p>Modul 426<br>
         <a href="mailto:hege@example.com">IA19A</a></p>
 </footer>
+<script src='./js/jquery-3.4.1.min.js'></script>
+<script src='./js/bootstrap.min.js'></script>
+<script src='./js/util.js'></script>
+<script src='./js/reservationen.js'></script>
 </body>
-
 </html>
