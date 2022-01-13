@@ -5,6 +5,6 @@ function validation() {
     if (username === "Hauswart" && password === "Password") {
         window.open("reservationsliste.html")
     } else {
-        alert("Fuck You");
+        alert("Benutername oder Passwort falsch");
     }
 }
