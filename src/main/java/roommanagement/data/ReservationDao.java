@@ -26,7 +26,8 @@ public class ReservationDao implements Dao<Reservation, String> {
         List<Reservation> reservationList = new ArrayList<>();
         String sqlQuery =
                 "SELECT reservationId ,start, end, roomId, tenantPhoneNumber, tenantName" +
-                        " FROM Reservation";
+                        " FROM Reservation"+
+                " WHERE DATEDIFF(start, CURDATE()) < 8 AND DATEDIFF(start, CURDATE()) > -1";
         try {
             resultSet = MySqlDB.sqlSelect(sqlQuery);
             while (resultSet.next()) {
