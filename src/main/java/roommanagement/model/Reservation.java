@@ -5,25 +5,25 @@ import java.util.Date;
 
 public class Reservation {
 
-    @FormParam("reservationID")
-    //@Pattern(regexp = "(?=[0-9]{13}|[- 0-9]{17})97[89](-[0-9]{1,5}){3}-[0-9]")
-    private int reservationID;
+    @FormParam("reservationId")
+    private int reservationId;
 
     @FormParam("start")
-    //@Size(min=5, max=40)
     private String start;
 
     @FormParam("end")
-    //@Size(min=3, max=40)
     private String end;
 
-    @FormParam("Room_roomId")
-    //@DecimalMin(value="0.05")
-    //@DecimalMax(value="199.95")
-    private int roomID;
+    @FormParam("roomId")
+    private int roomId;
 
     private String reservation;
-    private Room room;
+
+    @FormParam("tenantPhoneNumber")
+    private String tenantPhoneNumber;
+
+    @FormParam("tenantName")
+    private String tenantName;
 
 
 
@@ -35,108 +35,59 @@ public class Reservation {
 
     }
 
-    /**
-     * @return the reservationID
-     */
-    public int getReservationID() {
-        return reservationID;
+    public int getReservationId() {
+        return reservationId;
     }
 
-
-    /**
-     * sets the reservationID if valid
-     *
-     * @param reservationID the reservationID to be set
-     */
-    public void setReservationID(int reservationID) {
-        if (reservationID != 0) {
-            if (idCheck(String.valueOf(reservationID))) {
-                this.reservationID = reservationID;
-            }
-            reservationID = 0;
-        }
-        this.reservationID = reservationID;
+    public void setReservationId(int reservationId) {
+        this.reservationId = reservationId;
     }
 
-    /**
-     * @return the end
-     */
-    public String getEnd() {
-        return end;
-    }
-
-    /**
-     * Sets the end
-     *
-     * @param end the value to set
-     */
-    public void setEnd(String end) {
-        this.end = end;
-    }
-
-    /**
-     * @return the start
-     */
     public String getStart() {
         return start;
     }
 
-    /**
-     * Sets the start
-     *
-     * @param start the value to set
-     */
     public void setStart(String start) {
         this.start = start;
     }
 
-    /**
-     * @return the Room_roomID
-     */
-    public int getRoomID() {
-        return roomID;
+    public String getEnd() {
+        return end;
     }
 
-    /**
-     * Sets the room_roomID
-     *
-     * @param roomID the value to set
-     */
-    public void setRoomID(int roomID) {
-        this.roomID = roomID;
+    public void setEnd(String end) {
+        this.end = end;
     }
 
-
-    public static boolean idCheck(String ID) {
-        return true;
+    public int getRoomId() {
+        return roomId;
     }
 
-    /**
-     * Gets the reservation
-     *
-     * @return value of reservation
-     */
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
     public String getReservation() {
         return reservation;
     }
-
-    /**
-     * Sets the reservation
-     *
-     * @param reservation the value to set
-     */
 
     public void setReservation(String reservation) {
         this.reservation = reservation;
     }
 
-    public Room getRoom() {
-        return room;
+    public String getTenantPhoneNumber() {
+        return tenantPhoneNumber;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setTenantPhoneNumber(String tenantPhoneNumber) {
+        this.tenantPhoneNumber = tenantPhoneNumber;
     }
 
+    public String getTenantName() {
+        return tenantName;
+    }
 
+    public void setTenantName(String tenantName) {
+        this.tenantName = tenantName;
+    }
 }

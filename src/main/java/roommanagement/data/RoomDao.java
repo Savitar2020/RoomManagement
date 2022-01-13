@@ -23,7 +23,7 @@ public class RoomDao implements Dao<Room, String>{
         ResultSet resultSet;
         List<Room> roomList = new ArrayList<>();
         String sqlQuery =
-                "SELECT roomID, name, description, imageSrc, price" +
+                "SELECT roomId, name, description, imageSrc, price" +
                 " FROM Room";
         try {
             resultSet = MySqlDB.sqlSelect(sqlQuery);
@@ -47,21 +47,21 @@ public class RoomDao implements Dao<Room, String>{
 
     /**
      * reads a room from the table "Room" identified by the roomID
-     * @param roomID the primary key
+     * @param roomId the primary key
      * @return room object
      */
     @Override
-    public Room getEntity(int roomID) {
+    public Room getEntity(int roomId) {
         ResultSet resultSet;
         Room room = new Room();
         HashMap<Integer, String> hashMap = new HashMap<>();
 
         String sqlQuery =
-                "SELECT roomID,name, description, imageSrc, price" +
+                "SELECT roomId, name, description, imageSrc, price" +
                 " FROM Room"+
                 " WHERE roomId=?";
         try {
-            hashMap.put(1, String.valueOf(roomID));
+            hashMap.put(1, String.valueOf(roomId));
             resultSet = MySqlDB.sqlSelect(sqlQuery, hashMap);
             if (resultSet.next()) {
                 setValues(resultSet, room);
@@ -89,7 +89,7 @@ public class RoomDao implements Dao<Room, String>{
         PreparedStatement prepStmt;
         String sqlQuery =
                 "REPLACE Room" +
-                        " SET roomID='" + room.getRoomID() + "'," +
+                        " SET roomId='" + room.getRoomId() + "'," +
                         " name='" + room.getName() + "'," +
                         " descripton='" + room.getDescription() + "'," +
                         " imageSrc='" + room.getImageSrc() + "'," +
@@ -115,16 +115,16 @@ public class RoomDao implements Dao<Room, String>{
 
     /**
      * deletes a room in the table "Room" identified by the roomID
-     * @param roomID the primary key
+     * @param roomId the primary key
      * @return Result code
      */
     @Override
-    public Result delete(int roomID) {
+    public Result delete(int roomId) {
         Connection connection;
         PreparedStatement prepStmt;
         String sqlQuery =
                 "DELETE FROM Room" +
-                        " WHERE roomID=?";
+                        " WHERE roomId=?";
         try {
             connection = MySqlDB.getConnection();
             prepStmt = connection.prepareStatement(sqlQuery);
@@ -151,7 +151,7 @@ public class RoomDao implements Dao<Room, String>{
      * @throws SQLException
      */
     private void setValues(ResultSet resultSet, Room room) throws SQLException {
-        room.setRoomID(resultSet.getInt("roomID"));
+        room.setRoomId(resultSet.getInt("roomId"));
         room.setName(resultSet.getString("name"));
         room.setDescription(resultSet.getString("description"));
         room.setImageSrc(resultSet.getString("imageSrc"));
@@ -172,7 +172,7 @@ public class RoomDao implements Dao<Room, String>{
         int roomCount = 0;
         try {
             sqlQuery =
-                    "SELECT COUNT(roomID) " +
+                    "SELECT COUNT(roomId) " +
                             " FROM Room";
             resultSet = MySqlDB.sqlSelect(sqlQuery);
             if (resultSet.next()) {

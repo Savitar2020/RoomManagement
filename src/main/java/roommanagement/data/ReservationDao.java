@@ -25,8 +25,9 @@ public class ReservationDao implements Dao<Reservation, String> {
         ResultSet resultSet;
         List<Reservation> reservationList = new ArrayList<>();
         String sqlQuery =
-                "SELECT re.reservationID,re.start, re.end, ro.roomID" +
-                        " FROM Reservation AS re JOIN Room AS ro USING (Room_roomId)";
+                "SELECT reservationId ,start, end, roomId, tenantPhoneNumber, tenantName" +
+                        " FROM Reservation"+
+                " WHERE DATEDIFF(start, CURDATE()) < 8 AND DATEDIFF(start, CURDATE()) > -1";
         try {
             resultSet = MySqlDB.sqlSelect(sqlQuery);
             while (resultSet.next()) {
@@ -50,21 +51,21 @@ public class ReservationDao implements Dao<Reservation, String> {
     /**
      * reads a room from the table "Room" identified by the roomID
      *
-     * @param roomID the primary key
+     * @param reservationId the primary key
      * @return room object
      */
     @Override
-    public Reservation getEntity(int roomID) {
+    public Reservation getEntity(int reservationId) {
         ResultSet resultSet;
         Reservation reservation = new Reservation();
         HashMap<Integer, String> hashMap = new HashMap<>();
 
         String sqlQuery =
-                "SELECT roomId,name, description" +
-                        " FROM Room" +
-                        "WHERE roomID=?";
+                "SELECT reservationId,start, end, roomId, tenantPhoneNumber,tenantName" +
+                        " FROM Reservation" +
+                        " WHERE reservationId=?";
         try {
-            hashMap.put(1, sqlQuery);
+            hashMap.put(1, String.valueOf(reservationId));
             resultSet = MySqlDB.sqlSelect(sqlQuery, hashMap);
             if (resultSet.next()) {
                 setValues(resultSet, reservation);
@@ -93,12 +94,13 @@ public class ReservationDao implements Dao<Reservation, String> {
         PreparedStatement prepStmt;
         String sqlQuery =
                 "REPLACE Room" +
-                        " SET reservation='" + reservation.getReservationID() + "'," +
+                        " SET reservation='" + reservation.getReservationId() + "'," +
                         " start='" + reservation.getStart() + "'," +
                         " end='" + reservation.getEnd() + "'," +
-                        " Room_roomID='" + reservation.getRoom().getRoomID() + "'," +
-                        " reservation=" + reservation.getReservation() + "," +
-                        " room='" + reservation.getRoom() + "'";
+                        " roomID='" + reservation.getRoomId() + "'," +
+                        " tenantPhoneNumber='" + reservation.getTenantPhoneNumber() + "'," +
+                        " tenantName='" + reservation.getTenantName() + "'," +
+                        " reservation=" + reservation.getReservation() + "'";
         try {
             connection = MySqlDB.getConnection();
             prepStmt = connection.prepareStatement(sqlQuery);
@@ -120,16 +122,16 @@ public class ReservationDao implements Dao<Reservation, String> {
     /**
      * deletes a reservation in the table "Reservation" identified by the reservationID
      *
-     * @param reservationID the primary key
+     * @param reservationId the primary key
      * @return Result code
      */
     @Override
-    public Result delete(int reservationID) {
+    public Result delete(int reservationId){
         Connection connection;
         PreparedStatement prepStmt;
         String sqlQuery =
                 "DELETE FROM Reservation" +
-                        " WHERE reservationID=?";
+                        " WHERE reservationId=?";
         try {
             connection = MySqlDB.getConnection();
             prepStmt = connection.prepareStatement(sqlQuery);
@@ -156,13 +158,12 @@ public class ReservationDao implements Dao<Reservation, String> {
      * @throws SQLException
      */
     private void setValues(ResultSet resultSet, Reservation reservation) throws SQLException {
-        reservation.setReservationID(resultSet.getInt("reservationID"));
+        reservation.setReservationId(resultSet.getInt("reservationId"));
         reservation.setStart(resultSet.getString("start"));
         reservation.setEnd(resultSet.getString("end"));
-        reservation.setEnd(resultSet.getString("Room_roomID"));
-        reservation.setRoom(new Room());
-        reservation.getRoom().setRoomID(resultSet.getInt("roomID"));
-        reservation.getRoom().setRoom(resultSet.getString("room"));
+        reservation.setRoomId(resultSet.getInt("roomId"));
+        reservation.setTenantPhoneNumber(resultSet.getString("tenantPhoneNumber"));
+        reservation.setTenantName(resultSet.getString("tenantName"));
     }
 
     /**
@@ -179,8 +180,8 @@ public class ReservationDao implements Dao<Reservation, String> {
         int reservationCount = 0;
         try {
             sqlQuery =
-                    "SELECT COUNT(reservationID) " +
-                            " FROM Room";
+                    "SELECT COUNT(reservationId) " +
+                            " FROM Reservation";
             resultSet = MySqlDB.sqlSelect(sqlQuery);
             if (resultSet.next()) {
                 reservationCount = resultSet.getInt(1);
