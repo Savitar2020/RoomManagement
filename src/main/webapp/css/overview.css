@@ -1,5 +1,5 @@
 .product-container{
-    padding: 0 10vw;
+    padding: 0 8.5vw;
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -12,8 +12,9 @@
 .product-card{
     flex: 0 0 auto;
     width: 250px;
-    height: 450px;
+    height: 550px;
     margin-right: 40px;
+    margin-left: 40px;
 }
 
 .product-image{
@@ -88,10 +89,4 @@
 .price{
     font-weight: 900;
     font-size: 20px;
-}
-
-.actual-price{
-    margin-left: 20px;
-    opacity: 0.5;
-    text-decoration: line-through;
 }

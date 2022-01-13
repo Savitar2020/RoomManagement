@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservationsliste</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body {margin-left: 45px;}
+        nav {margin-top: 10px;
+            border-radius: 5px;
+            background: #FBE0C3;
+            padding: 25px 10px 25px 10px;}
+        footer {background: #FBE0C3;
+            padding: 25px 10px 25px 10px;
+            margin-top: 10px;
+            border-radius: 5px;}
+    </style>
+</head>
+<nav>
+    <a href="overview.html">Startseite</a> |
+    <a href="mietbedingungen.html">Allgemeine Mietbedingungen</a> |
+    <a href="login.html">Reservationsliste</a>
+</nav>
+<span id='message' style='color: red;'></span>
+<body>
+<h1>Reservationsliste</h1>
+<form id='reservationForm'>
+    <table class='table table-striped' id='reservationliste'>
+        <thead>
+        <tr>
+            <th scope='col'>Reservations ID</th>
+            <th scope='col'>Start</th>
+            <th scope='col'>End</th>
+            <th scope='col'>Mieter Name</th>
+            <th scope='col'>Mieter Telefonnummer</th>
+        </tr>
+        <!--<tr>
+            <td>reservation.start</td>
+            <td>reservation.end</td>
+            <td>reservation.tenantName</td>
+            <td>reservation.tenantPhoneNumber</td>
+            <td></td>
+        </tr>-->
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</form>
+<a href="overview.html"><button type="button" class="btn btn-default">Zurück</button></a>
+<footer>
+    <p>Modul 426<br>
+        <a href="mailto:hege@example.com">IA19A</a></p>
+</footer>
+<script src='./js/jquery-3.4.1.min.js'></script>
+<script src='./js/bootstrap.min.js'></script>
+<script src='./js/util.js'></script>
+<script src='./js/reservationen.js'></script>
+</body>
+</html>
