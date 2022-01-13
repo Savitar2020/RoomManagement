@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Raum Details</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<style>
+		body {margin-left: 45px;}
+		nav {margin-top: 10px;
+			border-radius: 5px;
+			background: #FBE0C3;
+			padding: 25px 10px 25px 10px;}
+		footer {background: #FBE0C3;
+			padding: 25px 10px 25px 10px;
+			margin-top: 10px;
+			border-radius: 5px;}
+	</style>
+</head>
+<nav>
+	<a href="overview.html">Startseite</a> |
+	<a href="mietbedingungen.html">Allgemeine Mietbedingungen</a> |
+</nav>
+<body>
+<h1>Turnhalle 1</h1>
+<form id="raumdetails" action="https://wiki.selfhtml.org/wiki/Spezial%3ASuche">
+	<div class="form-group">
+		<fieldset>
+			<legend>Raumdetails</legend>
+			<img src="images/Turnhalle1.gif" alt="Italian Trulli" width="200" height="200">
+			<br>
+			<label for="mietpreisHalbtag">
+				Mietpreis pro Halbtag: <input type="number" class="form-control" name="mietpreis" id="mietpreisHalbtag" placeholder="300" step="0.05" readonly>
+			</label>
+			<label for="mietpreisTag">
+				Mietpreis pro Tag: <input type="number" class="form-control" name="mietpreis" id="mietpreisTag" placeholder="450" step="0.05" readonly>
+			</label>
+			<br>
+			<label for="beschreibung">
+				Beschreibung: <br>
+				<textarea id="beschreibung" name="w3review" class="form-control" rows="4" cols="50" readonly>3 Turnhallen nebeneinander, die auch als 3fach Turnhalle genutzt werden können.
+					Mietpreis pro Turnhalle: CHF 300/Halbtag bzw. CHF 450/Tag.
+					Garderoben (2x Frauen, 2x Männer, 2x Schiedsrichter) sind bei der Miete der Turnhalle dabei.
+					Geräteräume könne zusätzlich für CHF 50 / CHF 75 gemietet werden.
+				</textarea>
+			</label>
+		</fieldset>
+	</div>
+	<a href="javascript:history.back()"><button type="button" class="btn btn-default">Zurück</button></a>
+</form>
+<footer>
+	<p>Modul 426<br>
+		<a href="mailto:hege@example.com">IA19A</a></p>
+</footer>
+</body>
+
+</html>
