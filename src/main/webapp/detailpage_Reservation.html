@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='de'>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body {margin-left: 45px;}
+        nav {margin-top: 10px;
+            border-radius: 5px;
+            background: #FBE0C3;
+            padding: 25px 10px 25px 10px;}
+        footer {background: #FBE0C3;
+            padding: 25px 10px 25px 10px;
+            margin-top: 10px;
+            border-radius: 5px;}
+    </style>
+</head>
+<nav>
+    <a href="overview.html">Startseite</a> |
+    <a href="mietbedingungen.html">Allgemeine Mietbedingungen</a> |
+</nav>
+
+<body>
+<div class='container'>
+    <form id='reservationEditForm' name='reservationEdit'>
+        <h3>Reservation bearbeiten</h3>
+        <div id='message' style='color: red;'></div>
+        <button type='button' id='logoff'>Abmelden</button>
+        <div class='form-group row'>
+            <label class='col-sm-2' for='raumID'>Raum</label>
+            <input class='form-control col-sm-8' id='raumID' name='raumID' type='text' size='30' maxlength='40' required/>
+        </div>
+        <div class='form-group row'>
+            <label class='col-sm-2'for='start'>Start-Datum</label>
+            <input class='form-control col-sm-8' id='start' name='start' type='datetime-local' size='30' maxlength='40' required/>
+        </div>
+        <div class='form-group row'>
+            <label class='col-sm-2' for='end'>End-Datum</label>
+            <input class='form-control col-sm-2' id='end' name='end' type='datetime-local' min='0.05' max='199.95' step='0.05'/>
+        </div>
+        <div class='form-group row'>
+            <label class='col-sm-2' for='eventID'>Event</label>
+            <select class='form-control col-sm-8' id='eventID' name='eventID' required>
+            </select>
+        </div>
+        <div class='form-group row'>
+            <label class='col-sm-2' for='status'>Status</label>
+            <select class='form-control col-sm-8' id='status' name='status' required>
+            </select>
+        </div>
+        <div class='form-group row'>
+            <label class='col-sm-2' for='name'>Mieter-Name</label>
+            <input class='form-control col-sm-2' id='name' name='name' type='text' size='30' maxlength='40' required/>
+        </div>
+        <div class='form-group row'>
+            <label class='col-sm-2'for='telNr'>Mieter-Telefonnummer</label>
+            <input class='form-control col-sm-2' id='telNr' name='telNr' type='text' size='30' maxlength='40' required/>
+        </div>
+        <div class='form-group row'>
+            <button id='save' type='submit'>Speichern</button>
+            <button id='cancel' type='button'>Abbruch</button>
+        </div>
+    </form>
+</div>
+<script src='./js/jquery-3.4.1.min.js'></script>
+<script src='./js/bootstrap.min.js'></script>
+<script src='./js/detailpage_Reservation.js'></script>
+<script src='./js/util.js'></script>
+</body>
+</html>
