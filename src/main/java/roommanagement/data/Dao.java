@@ -25,6 +25,14 @@ public interface Dao<T, K> {
     }
 
     /**
+     * gets all datasets in a table
+     * @return list of model-objects
+     */
+    default List<T> getAllByFilter(String r, String d, String m) {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * gets a single datasets in a table
      * @param i  primary key
      * @return model-object

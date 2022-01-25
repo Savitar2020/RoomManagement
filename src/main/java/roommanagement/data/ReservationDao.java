@@ -49,6 +49,63 @@ public class ReservationDao implements Dao<Reservation, String> {
     }
 
     /**
+     * reads all reservations in the table "Reservation"
+     *
+     * @return list of Reservation
+     */
+    @Override
+    public List<Reservation> getAllByFilter(String room, String start, String mieter) {
+        ResultSet resultSet;
+        List<Reservation> reservationList = new ArrayList<>();
+        String filter = "";
+        if(room != null){
+            if(!filter.isEmpty()){
+                filter += " AND ";
+            }
+            filter += "roomId = ";
+            filter+=room;
+        }
+        if(start  != null){
+            if(!filter.isEmpty()){
+                filter += " AND ";
+            }
+            filter += "start = DATE ('";
+            filter+= start;
+            filter +=  "')";
+        }
+        if(mieter  != null){
+            if(!filter.isEmpty()){
+                filter += " AND ";
+            }
+            filter += "tenantName = '";
+            filter += mieter;
+            filter +=  "'";
+        }
+        String sqlQuery =
+                "SELECT reservationId ,start, end, roomId, tenantPhoneNumber, tenantName" +
+                        " FROM Reservation"+
+                        " WHERE DATEDIFF(start, CURDATE()) > -1 AND " + filter;
+        try {
+            resultSet = MySqlDB.sqlSelect(sqlQuery);
+            while (resultSet.next()) {
+                Reservation reservation = new Reservation();
+                setValues(resultSet, reservation);
+                reservationList.add(reservation);
+            }
+
+        } catch (SQLException sqlEx) {
+
+            sqlEx.printStackTrace();
+            throw new RuntimeException();
+        } finally {
+
+            MySqlDB.sqlClose();
+        }
+        return reservationList;
+
+    }
+
+    /**
      * reads a room from the table "Room" identified by the roomID
      *
      * @param reservationId the primary key

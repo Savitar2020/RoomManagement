@@ -84,6 +84,36 @@ public class ReservationService {
         }
     }
 
+    @GET
+    @Path("listByFilter")
+    @Produces(MediaType.APPLICATION_JSON)
+
+    public Response listReservationsByFilter(
+            @QueryParam("room") String room,
+            @QueryParam("start") String start,
+            @QueryParam("mieter") String mieter,
+            @CookieParam("token") String token
+    ) {
+
+        int httpStatus = 200;
+        Dao<Reservation, String> reservationDao = new ReservationDao();
+        List<Reservation> reservationList = reservationDao.getAllByFilter(room, start, mieter);
+        if (reservationList.isEmpty())
+            httpStatus = 404;
+
+        if (reservationList.isEmpty()) {
+            return Response
+                    .status(404)
+                    .entity("{\"error\":\"Keine Reservation gefunden\"}")
+                    .build();
+        } else {
+            return Response
+                    .status(httpStatus)
+                    .entity(reservationList)
+                    .build();
+        }
+    }
+
     @POST
     @Path("save")
     @Produces(MediaType.TEXT_PLAIN)

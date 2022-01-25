@@ -8,6 +8,9 @@ public class Reservation {
     @FormParam("reservationId")
     private int reservationId;
 
+    @FormParam("eventId")
+    private int eventId;
+
     @FormParam("start")
     private String start;
 
@@ -25,7 +28,16 @@ public class Reservation {
     @FormParam("tenantName")
     private String tenantName;
 
+    @FormParam("status")
+    private String status;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     /**
      * default constructor
@@ -69,6 +81,14 @@ public class Reservation {
 
     public String getReservation() {
         return reservation;
+    }
+
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 
     public void setReservation(String reservation) {
