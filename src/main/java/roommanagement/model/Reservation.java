@@ -9,7 +9,7 @@ public class Reservation {
     private int reservationId;
 
     @FormParam("eventId")
-    private int eventId;
+    private String eventId;
 
     @FormParam("start")
     private String start;
@@ -83,11 +83,11 @@ public class Reservation {
         return reservation;
     }
 
-    public int getEventId() {
+    public String getEventId() {
         return eventId;
     }
 
-    public void setEventId(int eventId) {
+    public void setEventId(String eventId) {
         this.eventId = eventId;
     }
 
