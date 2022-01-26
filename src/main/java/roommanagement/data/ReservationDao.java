@@ -25,7 +25,7 @@ public class ReservationDao implements Dao<Reservation, String> {
         ResultSet resultSet;
         List<Reservation> reservationList = new ArrayList<>();
         String sqlQuery =
-                "SELECT reservationId ,start, end, roomId, tenantPhoneNumber, tenantName" +
+                "SELECT reservationId ,start, end, roomName, tenantPhoneNumber, tenantName" +
                         " FROM Reservation"+
                 " WHERE DATEDIFF(start, CURDATE()) < 8 AND DATEDIFF(start, CURDATE()) > -1";
         try {
@@ -62,8 +62,9 @@ public class ReservationDao implements Dao<Reservation, String> {
             if(!filter.isEmpty()){
                 filter += " AND ";
             }
-            filter += "roomId = ";
+            filter += "roomName = '";
             filter+=room;
+            filter +=  "'";
         }
         if(start  != null){
             if(!filter.isEmpty()){
@@ -82,8 +83,8 @@ public class ReservationDao implements Dao<Reservation, String> {
             filter +=  "'";
         }
         String sqlQuery =
-                "SELECT reservationId ,start, end, roomId, tenantPhoneNumber, tenantName" +
-                        " FROM Reservation"+
+                "SELECT reservationId ,start, end, roomName, tenantPhoneNumber, tenantName" +
+                        " FROM Reservation" +
                         " WHERE DATEDIFF(start, CURDATE()) > -1 AND " + filter;
         try {
             resultSet = MySqlDB.sqlSelect(sqlQuery);
@@ -118,7 +119,7 @@ public class ReservationDao implements Dao<Reservation, String> {
         HashMap<Integer, String> hashMap = new HashMap<>();
 
         String sqlQuery =
-                "SELECT reservationId,start, end, roomId, tenantPhoneNumber,tenantName" +
+                "SELECT reservationId,start, end, roomName, tenantPhoneNumber,tenantName" +
                         " FROM Reservation" +
                         " WHERE reservationId=?";
         try {
@@ -154,7 +155,7 @@ public class ReservationDao implements Dao<Reservation, String> {
                         " SET reservation='" + reservation.getReservationId() + "'," +
                         " start='" + reservation.getStart() + "'," +
                         " end='" + reservation.getEnd() + "'," +
-                        " roomID='" + reservation.getRoomId() + "'," +
+                        " roomName='" + reservation.getRoomName() + "'," +
                         " tenantPhoneNumber='" + reservation.getTenantPhoneNumber() + "'," +
                         " tenantName='" + reservation.getTenantName() + "'," +
                         " reservation=" + reservation.getReservation() + "'";
@@ -218,7 +219,7 @@ public class ReservationDao implements Dao<Reservation, String> {
         reservation.setReservationId(resultSet.getInt("reservationId"));
         reservation.setStart(resultSet.getString("start"));
         reservation.setEnd(resultSet.getString("end"));
-        reservation.setRoomId(resultSet.getInt("roomId"));
+        reservation.setRoomName(resultSet.getString("roomName"));
         reservation.setTenantPhoneNumber(resultSet.getString("tenantPhoneNumber"));
         reservation.setTenantName(resultSet.getString("tenantName"));
     }

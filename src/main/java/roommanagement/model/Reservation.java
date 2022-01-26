@@ -17,8 +17,8 @@ public class Reservation {
     @FormParam("end")
     private String end;
 
-    @FormParam("roomId")
-    private int roomId;
+    @FormParam("roomName")
+    private String roomName;
 
     private String reservation;
 
@@ -71,12 +71,12 @@ public class Reservation {
         this.end = end;
     }
 
-    public int getRoomId() {
-        return roomId;
+    public String getRoomName() {
+        return roomName;
     }
 
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 
     public String getReservation() {

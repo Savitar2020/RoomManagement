@@ -121,9 +121,10 @@ public class ReservationService {
             @FormParam("reservationId") int reservationId,
             @FormParam("start") String start,
             @FormParam("end") String end,
-            @FormParam("roomId") int roomId,
+            @FormParam("roomName") String roomName,
             @FormParam("tenantPhoneNumber") String tenantPhoneNumber,
-            @FormParam("tenantName") String tenantName
+            @FormParam("tenantName") String tenantName,
+            @CookieParam("token") String token
 
     ) {
         int httpStatus;
@@ -132,7 +133,7 @@ public class ReservationService {
         reservation.setReservationId(reservationId);
         reservation.setStart(start);
         reservation.setEnd(end);
-        reservation.setRoomId(roomId);
+        reservation.setRoomName(roomName);
         reservation.setTenantPhoneNumber(tenantPhoneNumber);
         reservation.setTenantName(tenantName);
         Dao<Reservation, String> reservationDao = new ReservationDao();
