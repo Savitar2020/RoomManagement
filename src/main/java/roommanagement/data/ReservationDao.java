@@ -159,7 +159,7 @@ public class ReservationDao implements Dao<Reservation, String> {
                 " end=?," +
                 " roomName=?," +
                 " tenantName=?," +
-                " tenantPhoneNumber=?" +
+                " tenantPhoneNumber=?," +
                 " status=?," +
                 " eventId=?";
 

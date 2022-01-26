@@ -124,6 +124,8 @@ public class ReservationService {
             @FormParam("roomName") String roomName,
             @FormParam("tenantPhoneNumber") String tenantPhoneNumber,
             @FormParam("tenantName") String tenantName,
+            @FormParam("status") String status,
+            @FormParam("eventId") String eventId,
             @CookieParam("token") String token
 
     ) {
@@ -136,6 +138,8 @@ public class ReservationService {
         reservation.setRoomName(roomName);
         reservation.setTenantPhoneNumber(tenantPhoneNumber);
         reservation.setTenantName(tenantName);
+        reservation.setStatus(status);
+        reservation.setEventId(eventId);
         Dao<Reservation, String> reservationDao = new ReservationDao();
         Result result = reservationDao.save(reservation);
         if (result == Result.SUCCESS) {
