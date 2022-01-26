@@ -69,7 +69,7 @@ function loadReservation() {
     if (reservationID !== null && reservationID != -1) {
         $
             .ajax({
-                url: "./resource/reservation/read?id=" + reservationID,
+                url: "./resource/reservations/read?id=" + reservationID,
                 dataType: "json",
                 type: "GET"
             })
@@ -100,12 +100,17 @@ function addEvents(eventList) {
  */
 function showReservation(reservation) {
     $("#message").empty();
-    $("#raumID").val(reservation.raumID);
+    $("#raumID").val(reservation.roomName);
     $("#start").val(reservation.start);
     $("#end").val(reservation.end);
-    $("#name").val(reservation.name);
-    $("#telNr").val(reservation.telNr);
+    $("#name").val(reservation.tenantName);
+    $("#telNr").val(reservation.tenantPhoneNumber);
     $("#status").val(reservation.status);
+    var sel = document.getElementById('status');
+    var opt = document.createElement('option');
+    opt.appendChild( document.createTextNode(reservation.status) );
+    opt.value = reservation.status;
+    sel.appendChild(opt);
     $("#eventID")
         .val(reservation.event.eventID)
         .change();

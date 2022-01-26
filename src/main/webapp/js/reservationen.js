@@ -55,7 +55,7 @@ function showReservations(reservationData) {
         tableData += "<td>" + reservation.tenantName + "</td>";
         tableData += "<td>" + reservation.start + "</td>";
         tableData += "<td>" + reservation.end + "</td>";
-        tableData += "<td><a href='./detailpage.html?uuid=" + reservation.reservationId + "'>Bearbeiten</a></td>";
+        tableData += "<td><a href='./detailpage_Reservation.html?ID=" + reservation.reservationId + "'>Bearbeiten</a></td>";
         tableData += "</tr>";
     });
     $("#reservationliste > tbody").html(tableData);
