@@ -27,27 +27,15 @@
 <span id='message' style='color: red;'></span>
 <body>
 <h1>Reservationsliste</h1>
-<label for="searchbar">
-<input type="text" id="searchbar" placeholder="Search for names.." title="Type in a name">
-</label>
-<label for="dateinput">Datum
-<input type="text" id="dateinput" placeholder="Datum..">
-</label>
-<label for="rauminput">Raum
-    <input type="text" id="rauminput" placeholder="Raum..">
-</label>
-<label for="mieterinput">Mieter
-    <input type="text" id="mieterinput" placeholder="Mieter..">
-</label>
 <form id='reservationForm'>
     <table class='table table-striped' id='reservationliste'>
         <thead>
         <tr>
-            <th scope='col'>Raumname</th>
-            <th scope='col'>Mieter Name</th>
+            <th scope='col'>Reservations ID</th>
             <th scope='col'>Start</th>
             <th scope='col'>End</th>
-
+            <th scope='col'>Mieter Name</th>
+            <th scope='col'>Mieter Telefonnummer</th>
         </tr>
         <!--<tr>
             <td>reservation.start</td>
@@ -69,7 +57,6 @@
 <script src='./js/jquery-3.4.1.min.js'></script>
 <script src='./js/bootstrap.min.js'></script>
 <script src='./js/util.js'></script>
-<script src='js/reservationen.js'></script>
-<script src='js/reservationsfilter.js'></script>
+<script src='js/events.js'></script>
 </body>
 </html>

@@ -51,11 +51,11 @@ function showReservations(reservationData) {
     var tableData = "";
     $.each(reservationData, function (index, reservation) {
         tableData += "<tr>";
-        tableData += "<td>Küche</td>";
-        tableData += "<td>" + reservation.tenantName + "</td>";
+        tableData += "<td>" + reservation.reservationId + "</td>";
         tableData += "<td>" + reservation.start + "</td>";
         tableData += "<td>" + reservation.end + "</td>";
-        tableData += "<td><a href='./detailpage.html?uuid=" + reservation.reservationId + "'>Bearbeiten</a></td>";
+        tableData += "<td>" + reservation.tenantName + "</td>";
+        tableData += "<td>" + reservation.tenantPhoneNumber + "</td>";
         tableData += "</tr>";
     });
     $("#reservationliste > tbody").html(tableData);
