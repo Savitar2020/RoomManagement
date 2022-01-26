@@ -1,6 +1,7 @@
 package roommanagement.data;
 
 import roommanagement.service.Config;
+import roommanagement.util.Result;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -33,6 +34,50 @@ public class MySqlDB {
     static synchronized ResultSet sqlSelect(String sqlQuery)
             throws SQLException {
         return sqlSelect(sqlQuery, null);
+    }
+
+    /**
+     * execute a query without dynamic values to update the db (INSERT, UPDATE, DELETE, REPLACE)
+     *
+     * @param sqlQuery
+     *            the query to be executed
+     * @return number of affected rows
+     * @throws SQLException
+     */
+    static Result sqlUpdate(String sqlQuery) throws SQLException {
+        return sqlUpdate(sqlQuery, null);
+    }
+
+    /**
+     * execute a query with dynamic values to update the db (UPDATE, DELETE, REPLACE)
+     *
+     * @param sqlQuery
+     *            the query to be executed
+     * @param values
+     *            map of values to be inserted
+     * @return number of affected rows
+     * @throws SQLException
+     */
+    static Result sqlUpdate(String sqlQuery, Map<Integer, String> values) throws SQLException {
+        try {
+            setPrepStmt(getConnection().prepareStatement(sqlQuery));
+
+            if (values != null) {
+                setValues(values);
+            }
+            int affectedRows = getPrepStmt().executeUpdate();
+            if (affectedRows <= 2) {
+                return Result.SUCCESS;
+            } else if (affectedRows == 0) {
+                return Result.NOACTION;
+            } else {
+                return Result.ERROR;
+            }
+        } catch (SQLException sqlException) {
+            throw sqlException;
+        }finally {
+            sqlClose();
+        }
     }
 
     static ResultSet sqlSelect(String sqlQuery, Map<Integer, String> values) throws SQLException {

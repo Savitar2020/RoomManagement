@@ -19,12 +19,14 @@ public class RoomDao implements Dao<Room, String>{
      * @return list of Room
      */
     @Override
+
     public List<Room> getAll() {
         ResultSet resultSet;
         List<Room> roomList = new ArrayList<>();
         String sqlQuery =
-                "SELECT roomId, name, description, imageSrc, price" +
-                " FROM Room";
+                "SELECT r.name, rv.name, rv.description, rv.imageSrc, rv.price" +
+                " FROM Room" +
+                " JOIN Room";
         try {
             resultSet = MySqlDB.sqlSelect(sqlQuery);
             while (resultSet.next()) {

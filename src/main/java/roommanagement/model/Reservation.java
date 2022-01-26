@@ -8,14 +8,17 @@ public class Reservation {
     @FormParam("reservationId")
     private int reservationId;
 
+    @FormParam("eventId")
+    private String eventId;
+
     @FormParam("start")
     private String start;
 
     @FormParam("end")
     private String end;
 
-    @FormParam("roomId")
-    private int roomId;
+    @FormParam("roomName")
+    private String roomName;
 
     private String reservation;
 
@@ -25,7 +28,16 @@ public class Reservation {
     @FormParam("tenantName")
     private String tenantName;
 
+    @FormParam("status")
+    private String status;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     /**
      * default constructor
@@ -59,16 +71,24 @@ public class Reservation {
         this.end = end;
     }
 
-    public int getRoomId() {
-        return roomId;
+    public String getRoomName() {
+        return roomName;
     }
 
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 
     public String getReservation() {
         return reservation;
+    }
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
     }
 
     public void setReservation(String reservation) {
