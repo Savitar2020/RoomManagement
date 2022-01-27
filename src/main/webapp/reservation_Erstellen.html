@@ -40,30 +40,13 @@
     <br>
     <div class='form-group row'>
         <label class='col-sm-2' for='raumID'>Raum</label>
-        <select class='form-control col-sm-8' name="date" id="raumID">
-            <option value=""></option>
-            <option value="kitchen">Küche</option>
-            <option value="classroom">Schulzimmer</option>
-            <option value="gym1">Turnhalle 1</option>
-            <option value="gym2">Turnhalle 2</option>
-            <option value="gym3">Turnhalle 3</option>
-        </select>
+        <input class='form-control col-sm-8' id='raumID' name='raumID' type='text' size='30' maxlength='40' required/>
     </div>
-    <div class="form-group row">
-    <label class='col-sm-2'for='date'>Start-Datum</label><br><br>
-        <select class='form-control col-sm-8' name="date" id="date">
-            <option value=""></option>
-            <option value="28.01.22">28.01.22</option>
-            <option value="29.01.22">29.01.22</option>
-            <option value="01.02.22">01.02.22</option>
-            <option value="03.02.22">03.02.22</option>
-        </select>
-    </div>
-    <!--<div class='form-group row'>
+    <div class='form-group row'>
         <label class='col-sm-2' for='start'>Start-Datum</label>
         <input class='form-control col-sm-8' id='start' name='start' type='datetime-local' size='30' maxlength='40'
                required/>
-    </div>-->
+    </div>
     <div class='form-group row'>
         <label class='col-sm-2' for='end'>End-Datum</label>
         <input class='form-control col-sm-2' id='end' name='end' type='datetime-local' min='0.05' max='199.95'
@@ -72,22 +55,11 @@
     <div class='form-group row'>
         <label class='col-sm-2' for='eventID'>Event</label>
         <select class='form-control col-sm-8' id='eventID' name='eventID' required>
-            <option value=""></option>
-            <option value="geburtstag">Geburtstag</option>
-            <option value="geschaeft">Geschäftlicher Anlass</option>
-            <option value="privat">Privater Anlass</option>
-            <option value="hochzeit">Hochzeit</option>
-            <option value="beerdigung">Beerdigung</option>
         </select>
     </div>
     <div class='form-group row'>
         <label class='col-sm-2' for='eventID'>Status</label>
         <select class='form-control col-sm-8' id='status' name='status' required>
-            <option value=""></option>
-            <option value="pendent">Pendent</option>
-            <option value="abgelehnt">Abgelehnt</option>
-            <option value="bestätigt">Bestätigt</option>
-            <option value="abgebrochen">Abgebrochen</option>
         </select>
     </div>
     <div class='form-group row'>

@@ -149,7 +149,7 @@ public class ReservationDao implements Dao<Reservation, String> {
         Map<Integer, String> values = new HashMap<>();
         String sqlQuery;
         if (reservation.getReservationId() == 0) {
-            reservation.setReservationId(2000);
+            reservation.setReservationId(5000);
             sqlQuery = "INSERT INTO Reservation";
         } else {
             sqlQuery = "REPLACE Reservation";
