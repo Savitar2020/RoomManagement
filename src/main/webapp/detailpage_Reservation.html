@@ -27,7 +27,6 @@
     <form id='reservationEditForm' name='reservationEdit'>
         <h3>Reservation bearbeiten</h3>
         <div id='message' style='color: red;'></div>
-        <button type='button' id='logoff'>Abmelden</button>
         <div class='form-group row'>
             <label class='col-sm-2' for='roomName'>Raum</label>
             <input class='form-control col-sm-8' id='roomName' name='roomName' type='text' size='30' maxlength='40' required/>
@@ -58,21 +57,6 @@
             <label class='col-sm-2'for='tenantPhoneNumber'>Mieter-Telefonnummer</label>
             <input class='form-control col-sm-2' id='tenantPhoneNumber' name='tenantPhoneNumber' type='text' size='30' maxlength='40' required/>
         </div>
-        <div class='form-group row'>
-        <label class='col-sm-2'for='dates'>Datum</label><br><br>
-        <div class="dropdown">
-            <select name="dates" id="dates">
-                <option value="28.01.22">28.01.22 Halber Tag</option>
-                <option value="28.01.22">28.01.22 Ganzer Tag</option>
-                <option value="29.01.22">29.01.22 Halber Tag</option>
-                <option value="29.01.22">29.01.22 Ganzer Tag</option>
-                <option value="01.02.22">01.02.22 Halber Tag</option>
-                <option value="29.01.22">29.01.22 Ganzer Tag</option>
-                <option value="03.02.22">03.02.22 Halber Tag</option>
-                <option value="29.01.22">29.01.22 Ganzer Tag</option>
-            </select>
-        </div>
-            <br><br>
         <div class='form-group row'>
             <button id='save' type='submit'>Speichern</button>
             <button id='cancel' type='button'>Abbruch</button>

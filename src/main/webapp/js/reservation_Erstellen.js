@@ -13,29 +13,30 @@
  * @param form the form being submitted
  */
 function saveReservation(form) {
-    form.preventDefault();
-    var id="";
+    //form.preventDefault();
     var start="";
     var end="";
     var tenantName="";
     var tenantPhoneNumber="";
     var eventId="";
     var roomName="";
+    var status="";
 
-    if ($.urlParam('id') !== null) {
-        id = "?id=" + $.urlParam('id');
-        start = "&start=" + $.urlParam('start');
+    if ($.urlParam('start') !== null) {
+        start = "?start=" + $.urlParam('start');
+        console.log($.urlParam('start'));
         end = "&end=" + $.urlParam('end');
         roomName = "&roomName=" + $.urlParam('roomName');
         tenantName = "&tenantName=" + $.urlParam('tenantName');
         tenantPhoneNumber = "&tenantPhoneNumber=" + $.urlParam('tenantPhoneNumber');
         eventId = "&eventId=" + $.urlParam('eventId');
+        status = "&status=" + $.urlParam('status');
 //?roomName=asdfasdf&start=2022-01-29+00%3A00%3A00&end=2022-01-29+00%3A00%3A00&eventId=test&status=test&tenantName=sadsd&tenantPhoneNumber=0980980809
     }
 
     $
         .ajax({
-            url: "./resource/reservation/save" + id + start + end + roomName + tenantName + tenantPhoneNumber + eventId,
+            url: "./resource/reservations/saveGet" + start + end + roomName + tenantName + tenantPhoneNumber + eventId + status,
             dataType: "text",
             type: "GET"
             //data: $("#reservationEditForm").serialize()
