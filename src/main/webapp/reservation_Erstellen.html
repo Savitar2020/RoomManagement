@@ -34,13 +34,13 @@
 
 <body>
 <div class='container'>
-    <br id='reservationEditForm' name='reservationEdit'>
+    <form id='reservationEditForm' name='reservationEdit'>
     <h3>Reservation Erstellen</h3>
     <div id='message' style='color: red;'></div>
     <br>
     <div class='form-group row'>
-        <label class='col-sm-2' for='raumID'>Raum</label>
-        <input class='form-control col-sm-8' id='raumID' name='raumID' type='text' size='30' maxlength='40' required/>
+        <label class='col-sm-2' for='roomName'>Raum</label>
+        <input class='form-control col-sm-8' id='roomName' name='roomName' type='text' size='30' maxlength='40' required/>
     </div>
     <div class='form-group row'>
         <label class='col-sm-2' for='start'>Start-Datum</label>
@@ -53,22 +53,24 @@
                step='0.05'/>
     </div>
     <div class='form-group row'>
-        <label class='col-sm-2' for='eventID'>Event</label>
-        <select class='form-control col-sm-8' id='eventID' name='eventID' required>
+        <label class='col-sm-2' for='eventId'>Event</label>
+        <select class='form-control col-sm-8' id='eventId' name='eventId' required>
+            <option value="test">test</option>
         </select>
     </div>
     <div class='form-group row'>
-        <label class='col-sm-2' for='eventID'>Status</label>
+        <label class='col-sm-2' for='status'>Status</label>
         <select class='form-control col-sm-8' id='status' name='status' required>
+            <option value="test">test</option>
         </select>
     </div>
     <div class='form-group row'>
-        <label class='col-sm-2' for='name'>Mieter-Name</label>
-        <input class='form-control col-sm-2' id='name' name='name' type='text' size='30' maxlength='40' required/>
+        <label class='col-sm-2' for='tenantName'>Mieter-Name</label>
+        <input class='form-control col-sm-2' id='tenantName' name='tenantName' type='text' size='30' maxlength='40' required/>
     </div>
     <div class='form-group row'>
-        <label class='col-sm-2' for='telNr'>Mieter-Telefonnummer</label>
-        <input class='form-control col-sm-2' id='telNr' name='telNr' type='text' size='30' maxlength='40' required/>
+        <label class='col-sm-2' for='tenantPhoneNumber'>Mieter-Telefonnummer</label>
+        <input class='form-control col-sm-2' id='tenantPhoneNumber' name='tenantPhoneNumber' type='text' size='30' maxlength='40' required/>
     </div>
     <div class='form-group row'>
         <button id='save' type='submit'>Speichern</button>
