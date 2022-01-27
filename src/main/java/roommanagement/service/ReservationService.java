@@ -114,6 +114,48 @@ public class ReservationService {
         }
     }
 
+    @GET
+    @Path("saveGet")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response saveReservationGET(
+            @QueryParam("reservationId") int reservationId,
+            @QueryParam("start") String start,
+            @QueryParam("end") String end,
+            @QueryParam("roomName") String roomName,
+            @QueryParam("tenantPhoneNumber") String tenantPhoneNumber,
+            @QueryParam("tenantName") String tenantName,
+            @QueryParam("status") String status,
+            @QueryParam("eventId") String eventId,
+            @CookieParam("token") String token
+
+    ) {
+        int httpStatus;
+        String message;
+        Reservation reservation = new Reservation();
+        reservation.setReservationId(reservationId);
+        reservation.setStart(start);
+        reservation.setEnd(end);
+        reservation.setRoomName(roomName);
+        reservation.setTenantPhoneNumber(tenantPhoneNumber);
+        reservation.setTenantName(tenantName);
+        reservation.setStatus(status);
+        reservation.setEventId(eventId);
+        Dao<Reservation, String> reservationDao = new ReservationDao();
+        Result result = reservationDao.save(reservation);
+        if (result == Result.SUCCESS) {
+            message = "Reservation gespeichert";
+            httpStatus = 200;
+        }
+        else {
+            message = "Fehler beim Speichern der Reservation";
+            httpStatus = 500;
+        }
+        return Response
+                .status(httpStatus)
+                .entity(message)
+                .build();
+    }
+
     @POST
     @Path("save")
     @Produces(MediaType.TEXT_PLAIN)
